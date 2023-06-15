@@ -51,7 +51,9 @@ PulseEffects is unmaintained as development has moved to the pipewire based Easy
 
 I found that after the filter, the sound is still quieter than Windows although most of the chassis resonance is gone. Under Windows + Dolby, the sound is also a bit more clear. I suspect maybe the Dolby software is causing the system to interact with the speakers differently, perhaps in a similar manners to [how Macbooks does it](https://news.ycombinator.com/item?id=34935483).
 
-There's also a slight increase in latency (~10ms?), which is mostly ok for music. I have not tested video yet.
+There's also a slight increase in latency (~10ms?), which is mostly ok for music. I have not tested video yet. 
+
+There might be usability concerns. Not sure if I can apply PulseEffect only against speaker and not headphones, as this will alter how things sound in headphones. Further investigations are required.
 
 ## Sources
 
