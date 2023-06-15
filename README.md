@@ -22,7 +22,7 @@ We need to figure out how the filtering is done with Dolby. To do this, we can s
 7. Under `Quality`, make sure the `Project Sample Rate` and `Default Sample Rate` is `48000Hz`.
 8. I selected 24-bit for the `Default Sample Format`. 32 bit float might be fine as well.
 9. Click `OK` to save the settings.
-10. Download the impulse WAV file from either [the original source](https://freesound.org/people/unfa/sounds/205620/) or [a mirror of it in this repo]().
+10. Download the impulse WAV file from either [the original source](https://freesound.org/people/unfa/sounds/205620/) or [a mirror of it in this repo](impulse48khz-2sec.wav).
 11. Open the WAV file with VLC. Pause the playback.
 12. Go to `Tools` -> `Preferences` in VLC. On the bottom left, it says `Show settings` and there are two radio boxes, `Simple` and `All`. For me, `Simple` is selected, click `All` to get a more detailed preferences menu.
 13. On the left tree, go to `Audio` -> `Output modules`.
@@ -32,6 +32,9 @@ We need to figure out how the filtering is done with Dolby. To do this, we can s
 17. Click play in Audacity. This should cause the recording to show a waveform in audacity.
 18. Stop the recording in Audacity and stop playback in VLC (if necessary).
 19. Zoom into the peak of the wavform and see something like the following. You have to zoom in quite far. In my screenshot below, that's a range of abouy 4ms. If you see just a single peak without anything else even if you zoomed in very far, you probably did something wrong?
+
+<img src="./ImpulseResponseScreenshot.PNG" />
+
 20. Select the audio clip centered around the maximum of the waveform, as shown in the above screenshot. Then go to `File` -> `Export Selected Audio`. Save the file as a WAV file.
 21. Rename the resulting file's extension from `.wav` to `.irs`. Keep this file around.
 
