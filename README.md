@@ -38,6 +38,15 @@ We need to figure out how the filtering is done with Dolby. To do this, we can s
 20. Select the audio clip centered around the maximum of the waveform, as shown in the above screenshot. Then go to `File` -> `Export Selected Audio`. Save the file as a WAV file.
 21. Rename the resulting file's extension from `.wav` to `.irs`. Keep this file around.
 
+## Ubuntu 22.04 via PulseEffects
+
+PulseEffects is unmaintained as development has moved to the pipewire based EasyEffects. That said, pulseeffect is widely available in existing distros. For Ubuntu 22.04:
+
+1. `sudo apt intall pulseeffects`
+2. Activate the convolver.
+3. Load the irs file.
+4. Make sure the default sound output is to PulseEffect.
+
 ## Sources
 
 1. https://stackoverflow.com/a/53688163
