@@ -43,7 +43,14 @@ I have sampled some files for various different ThinkPad models. They are in
 the directories here. For some models, I have recorded the impulse response for
 multiple Dolby profiles. Choose the one you like the best.
 
-## Ubuntu 22.04 via PulseEffects
+## EasyEffects for PipeWire using distros
+
+1. Install EasyEffects for your distro. For Fedora: `sudo dnf install easyeffects`.
+2. Open EasyEffects. Add Output effect "Convolver".
+3. In Convolver UI panel select "Impulses", import IRS file, then select it in impulse list and press "Load".
+4. Optional: save you output preset, activate EasyEffect service in "Preferences" and then enabled your preset Autoloading in PipeWire panel (top-center).
+
+## PulseEffects
 
 PulseEffects is unmaintained as development has moved to the pipewire based EasyEffects. That said, pulseeffect is widely available in existing distros. For Ubuntu 22.04:
 
