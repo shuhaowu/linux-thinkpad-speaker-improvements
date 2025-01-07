@@ -30,7 +30,7 @@ We need to figure out how the filtering is done with Dolby. To do this, we can s
 14. On the right side, the `Audio output module` should be `Windows Multimedia Device output` and the `Media role` should be set to `Video`. I also tried a `Media role` of `Music`, but it made no difference in the impulse response profile on my machine.
 15. Click `Save` to save the settings.
 16. Go back to Audacity, click the Record button (big circle at the top). The recording might be stuck (no waveform shows on screen), which is OK.
-17. Click play in Audacity. This should cause the recording to show a waveform in audacity.
+17. Click play in VLC. This should cause the recording to show a waveform in audacity.
 18. Stop the recording in Audacity and stop playback in VLC (if necessary).
 19. Zoom into the peak of the wavform and see something like the following. You have to zoom in quite far. In my screenshot below, that's a range of abouy 4ms. If you see just a single peak without anything else even if you zoomed in very far, you probably did something wrong?
 
