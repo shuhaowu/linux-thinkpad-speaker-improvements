@@ -9,6 +9,10 @@ The good news is that there is a way to improve the speaker sound quality. It se
 
 The first item is something we can emulate on Linux while the second item is not. Thus the bad news is the sound quality from Windows + Dolby will always be better than Linux, until someone can reverse engineer with Dolby is doing to the speakers post convolution. This guide shows you how to apply the same convolution that Dolby is applying in Linux.
 
+## Warning: using the files in this repo
+
+Note that the files in this repo are contributed by users on the internet. **Use at your own risk!** I did not validate any of the files except for the ones I contributed, which are ThinkPadX1NanoGen1 and ThinkPadX390. If you find an issue with any of the files. Let me know and send a PR to remove/modify them. Thanks.
+
 ## Obtaining the impulse response profile (.irs) files from Windows
 
 We need to figure out how the filtering is done with Dolby. To do this, we can simply play an impulse audio file, and measure the output audio, which is the impulse response and we can use it in a convolution filter. Step by step:
