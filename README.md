@@ -96,7 +96,86 @@ the Convolver filter, but that's up to you):
 
 You can test the headphone/laptop speaker switching. My observation is that it
 takes about 1-3 seconds for PulseEffects to switch between the presets.
+## Optional : add bass enhancer and multiband compressor to enhance the sound further
+I found it worth it to add more effects between the Convolver and the limiter. It allowed to increase the percieved loundness and bass. I will detail the settings I used on Easy Effects, the process should be similar on Pulse Effects.
+### Signal Chain
+- Convolver
+- Bass Enhancer 
+- Multiband Compressor
+- Limiter
+---
+### 1. Convolver
 
+Purpose:
+- Apply a static tonal curve derived from speaker + Dolby measurements
+- Provide frequency shaping only (no dynamics)
+
+Settings:
+- **Impulse Response:** Dolby-derived speaker IR (short EQ-type IR)
+- **IR Length:** ≤ 5 ms
+- **Stereo width:** 100 %
+- **Autogain:** Disabled (preserve balance of the IR)
+- **Input Gain:** 0.0 dB
+- **Wet:** 0 dB
+- **Dry:** -inf
+- **Output Gain:** −1.0 to −2.0 dB (manual trim for headroom)
+---
+
+### 2. Bass Enhancer (Calf Studio Gear)
+
+Purpose:
+- Add psychoacoustic bass via harmonic generation. Generates harmonics above the physical bass cutoff of laptop speakers
+- Increase perceived low-end without stressing small speakers
+- Keep subtle; audible distortion indicates excessive settings
+
+Settings:
+- **Amount:** +3.5 dB (adjust by ear, if it distorts the sound, it's too high)
+- **Harmonics:** 8.0 (can make the bass sound synthetic if pushed too high)
+- **Scope:** 250 Hz (Frequency where the effect stops)
+- **Blend Harmonics:** ~70% toward 2nd harmonic
+- **Floor Active:** Disabled (sets a minimum frequency, not needed for laptop speakers)
+---
+
+## 3. Multiband Compressor
+
+Purpose:
+- Control dynamics per frequency band
+- Protect speakers while increasing perceived loudness
+- Stabilize dialogue and reduce harshness
+
+General Settings:
+- **Mode:** Downward compression
+- **Knee:** Soft (−6 dB global; −9 dB for low band if per-band supported)
+- **Stereo Mode:** Linked
+
+### Band Configuration
+
+| Band | Frequency Range | Attack Threshold | Ratio | Attack Time | Release Time | Relase Threshold | Makeup | Knee  |
+| ---- | --------------- | ---------------- | ----- | ----------- | ------------ | ---------------- | ------ | ----- |
+| Low  | 0–180 Hz        | −24 dB           | 2.5:1 | 20 ms       | 160 ms       | -inf             | +2 dB  | -9 dB |
+| Mid  | 180 Hz–3.5 kHz  | −30 dB           | 1.2:1 | 10 ms       | 120 ms       |  -inf               | 0 dB   | -6 dB |
+| High | 3.5–inf kHz     | −26 dB           | 1.6:1 | 3 ms        | 90 ms        | -inf                | −1 dB  | -6 dB |
+
+Notes: In easy effects, using linux studio plugins, you can only set the start (the lower bound of the band). So for the first band there is no start, the second should be 180 Hz and the third 3.5 kHz.
+
+---
+
+## 4. Limiter
+
+Purpose:
+- Enforce an absolute output ceiling
+- Prevent clipping and intersample peaks
+- Provide final loudness control
+
+Settings:
+- **Mode:** Hermite (Herm thin)
+- **Oversampling:** True Peak 24bits (Important after convolution and harmonic generation)
+- **Threshold / Ceiling:** −1.0 dB
+- **Sidechain Lookahead:** 3 ms
+- **Attack:** 0.25 ms
+- **Release:** 20 ms
+- **Dithering:** None (unnecessary for real-time playback)
+---
 ## Results
 
 I found that after the `Convolver` + `Limiter`:
